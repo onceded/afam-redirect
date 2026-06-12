@@ -257,7 +257,7 @@
     document.getElementById("token-text").textContent = display;
   }
 
-  function apriApp() {
+function apriApp() {
     if (!token) return;
 
     const btn = document.getElementById("btn-apri");
@@ -272,16 +272,8 @@
 
     window.location.href = "afam://" + token;
 
-    let val = 3;
-    document.getElementById("countdown").textContent = val;
-    countdownInterval = setInterval(() => {
-      val--;
-      const el = document.getElementById("countdown");
-      if (el) el.textContent = val;
-      if (val <= 0) {
-        clearInterval(countdownInterval);
-        window.close();
-      }
+    setTimeout(() => {
+      window.close();
     }, 1000);
   }
 
