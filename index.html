@@ -1,21 +1,294 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio AFAM</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1117;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e2e8f0;
+    }
+
+    .card {
+      background: #1a1d27;
+      border: 1px solid #2d3148;
+      border-radius: 20px;
+      padding: 48px 52px;
+      max-width: 460px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #f1f5f9;
+    }
+
+    .logo-text span {
+      color: #818cf8;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    .token-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0f1117;
+      border: 1px solid #2d3148;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+      color: #818cf8;
+      margin-bottom: 32px;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .token-badge svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      stroke: #818cf8;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn:active { transform: scale(0.98); }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 24px;
+      background: transparent;
+      color: #64748b;
+      font-size: 14px;
+      border: 1px solid #2d3148;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-ghost:hover { background: #0f1117; color: #94a3b8; }
+
+    .divider {
+      height: 1px;
+      background: #2d3148;
+      margin: 28px 0;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #475569;
+      margin-top: 20px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .error-state h1 { color: #f87171; }
+    .error-state .subtitle { color: #64748b; }
+
+    #countdown {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
-  <p>Apertura del Portfolio in corso... Se non si apre automaticamente, assicurati di aver installato l'applicazione.</p>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
-    if (token) {
-      setTimeout(() => {
-        window.location.href = "afam://" + token;
-      }, 500);
-    } else {
-      document.body.innerText = "Link non valido o scaduto.";
-    }
-  </script>
+
+<div class="card" id="main-card">
+
+  <div class="logo-wrap">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        <line x1="9" y1="7" x2="15" y2="7"/>
+        <line x1="9" y1="11" x2="15" y2="11"/>
+      </svg>
+    </div>
+    <div class="logo-text">Portfolio <span>AFAM</span></div>
+  </div>
+
+  <div id="valid-state">
+    <h1>Portfolio condiviso</h1>
+    <p class="subtitle">Hai ricevuto un accesso a un portfolio.<br>Clicca il pulsante per aprirlo nell'applicazione.</p>
+
+    <div class="token-badge" id="token-display">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span id="token-text">caricamento...</span>
+    </div>
+
+    <button class="btn" id="btn-apri" onclick="apriApp()">
+      <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Apri nell'applicazione
+    </button>
+
+    <button class="btn-ghost" id="btn-chiudi" onclick="chiudiPagina()">
+      Chiudi questa scheda
+    </button>
+
+    <div class="divider"></div>
+
+    <div class="info-row">
+      <span><span class="status-dot"></span>Link attivo</span>
+      <span>Chiusura automatica in <span id="countdown">10</span>s dopo l'apertura</span>
+    </div>
+  </div>
+
+  <div id="error-state" class="error-state hidden">
+    <h1>Link non valido</h1>
+    <p class="subtitle">Il link che hai seguito non è valido o è scaduto.<br>Contatta chi te lo ha inviato per richiederne uno aggiornato.</p>
+  </div>
+
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get("token");
+  let countdownInterval = null;
+  let countdownValue = 10;
+
+  if (!token) {
+    document.getElementById("valid-state").classList.add("hidden");
+    document.getElementById("error-state").classList.remove("hidden");
+  } else {
+    const display = token.length > 36 ? token.substring(0, 33) + "..." : token;
+    document.getElementById("token-text").textContent = display;
+  }
+
+  function apriApp() {
+    if (!token) return;
+
+    const btn = document.getElementById("btn-apri");
+    btn.innerHTML = `
+      <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      Apertura in corso...
+    `;
+    btn.style.background = "linear-gradient(135deg, #059669, #10b981)";
+    btn.disabled = true;
+
+    window.location.href = "afam://" + token;
+
+    let val = 10;
+    document.getElementById("countdown").textContent = val;
+    countdownInterval = setInterval(() => {
+      val--;
+      const el = document.getElementById("countdown");
+      if (el) el.textContent = val;
+      if (val <= 0) {
+        clearInterval(countdownInterval);
+        window.close();
+      }
+    }, 1000);
+  }
+
+  function chiudiPagina() {
+    window.close();
+  }
+</script>
+
 </body>
 </html>
