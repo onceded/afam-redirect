@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio AFAM</title>
+</head>
+<body>
+  <p>Apertura del Portfolio in corso... Se non si apre automaticamente, assicurati di aver installato l'applicazione.</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+    if (token) {
+      setTimeout(() => {
+        window.location.href = "afam://" + token;
+      }, 500);
+    } else {
+      document.body.innerText = "Link non valido o scaduto.";
+    }
+  </script>
+</body>
+</html>
