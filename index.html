@@ -272,7 +272,7 @@
 
     window.location.href = "afam://" + token;
 
-    let val = 0;
+    let val = 5;
     document.getElementById("countdown").textContent = val;
     countdownInterval = setInterval(() => {
       val--;
@@ -282,7 +282,7 @@
         clearInterval(countdownInterval);
         window.close();
       }
-    }, 100);
+    }, 1000);
   }
 
   function chiudiPagina() {
